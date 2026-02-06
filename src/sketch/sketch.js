@@ -17,7 +17,10 @@ export default (parent, text) => (sketch) => {
 
   const fillDots = (width, height) => {
     dots = [];
-    let [firstWord, secondWord, thirdWord] = text.split(' ') // Assumption that text is just 3 words, no more, no less
+    const parts = text.split(' ');
+    const firstWord = parts[0] || '';
+    const secondWord = parts[1] || '';
+    const thirdWord = parts.slice(2).join(' ');
 
     // A dirty hack to make it work on both desktop and mobile phones
     if (width > height) {
@@ -50,8 +53,8 @@ export default (parent, text) => (sketch) => {
   };
 
   sketch.setup = () => {
-    const width = parent.offsetWidth;
-    const height = parent.offsetHeight;
+    const width = parent.clientWidth;
+    const height = parent.clientHeight;
     sketch.createCanvas(width, height);
     fillDots(width, height);
     sketch.frameRate(defaultFrameRate);
@@ -64,5 +67,12 @@ export default (parent, text) => (sketch) => {
       dot.applyAllForces();
       dot.show();
     });
+  };
+
+  sketch.windowResized = () => {
+    const width = parent.clientWidth;
+    const height = parent.clientHeight;
+    sketch.resizeCanvas(width, height);
+    fillDots(width, height);
   };
 };

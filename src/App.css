@@ -4,8 +4,8 @@ body {
 
 .main {
   display: grid;
-  height: 100vh;
-  width: auto;
+  height: 100dvh;
+  width: 100vw;
   animation: loading 0.5s linear;
 }
 

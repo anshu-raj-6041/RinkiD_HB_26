@@ -15,4 +15,4 @@ ReactDOM.render(
 // serviceWorker.register() for app to work offline and load faster. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 // change register to unregister to disable this
-serviceWorker.register();
+ serviceWorker.register();
